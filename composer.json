@@ -13,6 +13,7 @@
 		"classmap": [
 				"src/mpower"
 		],
+		"psr-0": ["Sirakoff\\":"src/"]
 		"files":[
 			"src/mpower.php"
 		]
