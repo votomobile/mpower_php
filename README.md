@@ -7,42 +7,42 @@ http://mpowerpayments.com/developers/docs/php.html
 
 ## Installation
 
-Require Mpower PHP library
+Install using composer:
 
-    require 'mpower/mpower.php'
+    composer require sirakoff/mpower_php:dev-master
 
 ## Setup your API Keys
 
-    MPower_Setup::setMasterKey(YOUR_API_MASTER_KEY);
-    MPower_Setup::setPublicKey(YOUR_API_PUBLIC_KEY);
-    MPower_Setup::setPrivateKey(YOUR_API_PRIVATE_KEY);
-    MPower_Setup::setMode(["test"|"live"]);
-    MPower_Setup::setToken(YOUR_API_TOKEN);
+    \MPower_Setup::setMasterKey(YOUR_API_MASTER_KEY);
+    \MPower_Setup::setPublicKey(YOUR_API_PUBLIC_KEY);
+    \MPower_Setup::setPrivateKey(YOUR_API_PRIVATE_KEY);
+    \MPower_Setup::setMode(["test"|"live"]);
+    \MPower_Setup::setToken(YOUR_API_TOKEN);
 
 ## Setup your checkout store information
 
-    MPower_Checkout_Store::setName("My Awesome Online Store");
-    MPower_Checkout_Store::setTagline("My awesome store's awesome tagline");
-    MPower_Checkout_Store::setPhoneNumber(STORE_PHONENO);
-    MPower_Checkout_Store::setPostalAddress(STORE_ADDRESS);
+    \MPower_Checkout_Store::setName("My Awesome Online Store");
+    \MPower_Checkout_Store::setTagline("My awesome store's awesome tagline");
+    \MPower_Checkout_Store::setPhoneNumber(STORE_PHONENO);
+    \MPower_Checkout_Store::setPostalAddress(STORE_ADDRESS);
 
 Customer will be redirected back to this URL when he cancels the checkout on MPower website
 
-    MPower_Checkout_Store::setCancelUrl(CHECKOUT_CANCEL_URL);
+    \MPower_Checkout_Store::setCancelUrl(CHECKOUT_CANCEL_URL);
 
 MPower will automatically redirect customer to this URL after successfull payment.
 This setup is optional and highly recommended you dont set it, unless you want to customize the payment experience of your customers.
 When a returnURL is not set, MPower will redirect the customer to the receipt page.
 
-    MPower_Checkout_Store::setReturnUrl(CHECKOUT_RETURN_URL);
+    \MPower_Checkout_Store::setReturnUrl(CHECKOUT_RETURN_URL);
 
 ## Create your Checkout Invoice
 
-    $co = new MPower_Checkout_Invoice();
+    $co = new \MPower_Checkout_Invoice();
 
 ## Create your Onsite Payment Request Invoice
 
-    co = new MPower_Onsite_Invoice();
+    co = new \MPower_Onsite_Invoice();
 
 Params for addItem function `addItem(name_of_item,quantity,unit_price,total_price,optional_description)`
 
@@ -99,7 +99,7 @@ Second step requires you to accept the confirmation TOKEN from the customer, add
 ## DirectPay Request
 You can pay any MPower account directly via your third party apps. This is particularly excellent for implementing your own Adaptive payment solutions on top of MPower. 
 
-    $direct_pay = new MPower_DirectPay();
+    $direct_pay = new \MPower_DirectPay();
     if ($direct_pay->creditAccount("MPOWER_CUSTOMER_USERNAME_OR_PHONENO",70.65)) {
       echo $direct_pay->description."\n";
       echo $direct_pay->response_text."\n";
