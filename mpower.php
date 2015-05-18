@@ -5,6 +5,9 @@ set_include_path(get_include_path() . PATH_SEPARATOR . realpath(dirname(__FILE__
 
 abstract class MPower {
   const VERSION = "1.2.0";
+  const SUCCESS = "success";
+  const FAIL = "fail";
+  const PENDING = "pending";
 }
 
 if (strnatcmp(phpversion(),'5.3.0') >= 0) {
@@ -12,6 +15,10 @@ if (strnatcmp(phpversion(),'5.3.0') >= 0) {
 }else{
   define('JSON_ENCODE_PARAM_SUPPORT',   false);
 }
+
+///define("MPOWER_SUCCESS", "success");
+//define("MPOWER_FAIL", "fail");
+//define("MPOWER_PENDING", "pending");
 
 require_once("mpower/setup.php");
 require_once("mpower/customdata.php");
