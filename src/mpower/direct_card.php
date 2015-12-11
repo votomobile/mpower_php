@@ -17,7 +17,7 @@ class MPower_DirectCard extends MPower_Checkout {
     if(count($result) > 0) {
       switch ($result['response_code']) {
         case 00:
-          $this->status = $result['status'];
+          $this->status = MPower::SUCCESS;
           $this->response_text = $result["response_text"];
           $this->description = $result["description"];
           $this->transaction_id = $result["transaction_id"];
@@ -25,13 +25,13 @@ class MPower_DirectCard extends MPower_Checkout {
           return true;
           break;
         default:
-          $this->status = $result['status'];
+          $this->status = MPower::FAIL;
           $this->response_text = $result["response_text"];
           $this->response_code = $result["response_code"];
           return false;
       }
     }else{
-      $this->status = "fail";
+      $this->status = MPower::FAIL;
       $this->response_code = 4002;
       $this->response_text = "An Unknown MPower Server Error Occured.";
       return false;
