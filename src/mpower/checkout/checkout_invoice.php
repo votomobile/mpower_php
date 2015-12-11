@@ -119,7 +119,7 @@ class MPower_Checkout_Invoice extends MPower_Checkout {
     }
     
     $result = MPower_Utilities::httpGetRequest(MPower_Setup::getCheckoutConfirmUrl().$token);
-    if(count($result) > 0) {
+    if(isset($result['status'])) {
       switch ($result['status']) {
         case 'completed':
           $this->status = $result['status'];
